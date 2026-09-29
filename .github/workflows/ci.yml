@@ -1,0 +1,13 @@
+name: ci
+on:
+  pull_request:
+  push:
+    branches: [main]
+  merge_group:
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - uses: actions/checkout@v7
+      - run: test "$(cat ci-status)" = pass
